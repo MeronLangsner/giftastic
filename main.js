@@ -1,5 +1,23 @@
+$("#submit-fighting-style").on("click", function() {
+  // grab text from input
+
+  var fightingStyle = $("#fighting-style").val();
+  console.log(fightingStyle);
+
+  // create new button w text
+
+  var btn = $("<button></button>");
+
+  // add text from input to new button
+
+  btn.html("Click for " + fightingStyle + "!");
+
+  // append button to button container div
+
+  $("#button-container").append(btn);
+});
+
 $("#kung_fu-button").on("click", function() {
-  //
   var queryURL =
     "https://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=kung_fu";
 
