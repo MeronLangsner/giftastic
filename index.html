@@ -4,10 +4,49 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
+    <title>Kung Fu</title>
   </head>
   <body>
-    <div id="app"></div>
-  </body>
+    
+    <link rel="stylesheet" href="styles.css">
+ 
   <script src="main.js"></script>
+
+  <body>
+    <button id="kung_fu-button">Click for KUNG FU!</button>
+    <div id="images"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript"></script>
+    <script>
+      //
+      $("#kung_fu-button").on("click", function() {
+        //
+        var queryURL =
+          "https://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=kung_fu";
+
+        //
+        $.ajax({
+          url: queryURL,
+          method: "GET"
+        })
+
+          //
+          .then(function(res) {
+            //
+            var imageUrl = res.data.image_original_url;
+
+            //
+            var kung_fuImage = $("<img>");
+
+            //
+            kung_fuImage.attr("src", imageUrl);
+            kung_fuImage.attr("alt", "kung fu image");
+
+            //
+            $("#images").prepend(kung_fuImage);
+          });
+      });
+    </script>
+  </body>
+</html>
 </html>
