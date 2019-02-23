@@ -1,3 +1,57 @@
-var app = document.getElementById("app");
+$("#kung_fu-button").on("click", function() {
+  //
+  var queryURL =
+    "https://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=kung_fu";
 
-app.innerHTML = "<h1>Test</h1>";
+  //
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  })
+
+    //
+    .then(function(res) {
+      //
+      var imageUrl = res.data.image_original_url;
+
+      //
+      var kung_fuImage = $("<img>");
+
+      //
+      kung_fuImage.attr("src", imageUrl);
+      kung_fuImage.attr("alt", "kung fu image");
+
+      //
+      $("#images").prepend(kung_fuImage);
+    });
+});
+
+//
+$("#judo-button").on("click", function() {
+  console.log("JudoFlip!");
+  //
+  var queryURL =
+    "https://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=judo";
+
+  //
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  })
+
+    //
+    .then(function(res) {
+      //
+      var imageUrl = res.data.image_original_url;
+
+      //
+      var judoImage = $("<img>");
+
+      //
+      judoImage.attr("src", imageUrl);
+      judoImage.attr("alt", "judo image");
+
+      //
+      $("#images").prepend(judoImage);
+    });
+});
