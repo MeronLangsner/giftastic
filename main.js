@@ -12,6 +12,33 @@ $("#submit-fighting-style").on("click", function() {
 
   btn.html("Click for " + fightingStyle + "!");
 
+  // add AJAX event listener to new button
+
+  btn.on("click", function() {
+    var queryURL =
+      "https://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=" +
+      fightingStyle;
+
+    //
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).then(function(res) {
+      //
+      var imageUrl = res.data.image_original_url;
+
+      //
+      var kung_fuImage = $("<img>");
+
+      //
+      kung_fuImage.attr("src", imageUrl);
+      kung_fuImage.attr("alt", "kung fu image");
+
+      //
+      $("#images").prepend(kung_fuImage);
+    });
+  });
+
   // append button to button container div
 
   $("#button-container").append(btn);
